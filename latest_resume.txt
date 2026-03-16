@@ -1,0 +1,47 @@
+APURVA  
+AI/ML Engineerkanthapurva655@gmail.com
+• +91-8076475232
+• Faridabad, Haryana, India
+PROFILE
+AI/ML Engineer with hands-on experience in LLM-based systems, Retrieval-Augmented Generation (RAG), 
+model fine-tuning, and MLOps. Proven ability to build scalable, low-latency AI pipelines using FastAPI, vector 
+databases, and automated evaluation frameworks. Strong focus on model reliability, hallucination mitigation, 
+and production-ready ML systems.
+EXPERIENCE
+MoneyPlant AI Jun 2025 - Aug 2025
+AI/Backend Engineer Intern Remote
+Performed LLM reliability analysis including hallucination detection and model drift monitoring across 10+ 
+production-grade models
+Developed automated evaluation framework using MLflow, reducing manual testing time by 60%
+Engineered high-throughput, low-latency APIs using FastAPI and NestJS, handling 1000+ concurrent 
+requests
+Implemented secure JWT authentication and RBAC for enterprise-grade compliance
+HealthBridge Jun 2023 - Aug 2023
+Software Engineering Intern Remote
+Integrated healthcare REST APIs enabling real-time AI-driven patient data workflows
+Optimized data pipelines, improving downstream ML processing efficiency by 40%
+Collaborated with data science and product teams to design AI-ready system architectures
+EDUCATION
+J C Bose University of Science and Technology, YMCA Faridabad Jan 2022 - Jan 2026
+B.Tech in Computer Engineering
+CGPA: 7.8/10.0
+SKILLS
+TransformersLLMs (LLaMA, GPT, BERT) Deep LearningMachine Learning
+Fine-tuning (LoRA, PEFT) Retrieval-Augmented Generation (RAG) Prompt Engineering Python
+JavaPyTorchTensorFlowHuggingFaceLangChainLlamaIndexScikit-learn
+PandasNumPyMLflowDVCExperiment Tracking Model Versioning Docker
+CI/CD Pipelines FastAPINestJSMongoDBPostgreSQLFAISSChroma
+PROJECTS
+Medical Diagnosis Assistant GitHub
+Built production-grade clinical decision support system using LLaMA3 with RAG architecture. Developed 
+scalable PDF ingestion pipeline for 500+ medical documents with custom chunking and embeddings. 
+Achieved 92% retrieval accuracy with <100ms latency using Pinecone hybrid search. Reduced LLM 
+hallucinations by 35% via grounded, document-based generation.
+InvestGuard — Real-time Financial Fraud Detection GitHub
+Designed ML/NLP pipeline for real-time fraud detection from financial content. Processed 50k+ data samples 
+using advanced text preprocessing and ensemble modeling. Achieved 88% accuracy using optimized XG-
+Boost and Random Forest classifiers. Deployed interactive Streamlit dashboard for fraud risk visualization.
+RehearseAI — AI Interview Coach GitHub
+Developed AI-powered interview preparation platform with real-time speech analysis. Integrated OpenAI 
+Whisper achieving 95%+ transcription accuracy. Implemented multi-modal analysis including sentiment, 
+emotion, and technical depth. Enabled realistic interviewer voice simulation using ElevenLabs API.

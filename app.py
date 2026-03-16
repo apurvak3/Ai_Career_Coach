@@ -18,6 +18,7 @@ app = Flask(__name__, template_folder="template")
 
 UPLOAD_FOLDER = BASE_DIR / "uploads"
 VECTOR_INDEX_FOLDER = BASE_DIR / "vector_index"
+RESUME_TEXT_FILE = BASE_DIR / "latest_resume.txt"
 ALLOWED_EXTENSIONS = {"pdf"}
 
 app.config["UPLOAD_FOLDER"] = str(UPLOAD_FOLDER)
@@ -73,6 +74,10 @@ def build_vector_store(resume_text: str) -> None:
     vectorstore.save_local(str(VECTOR_INDEX_FOLDER))
 
 
+def save_resume_text(resume_text: str) -> None:
+    RESUME_TEXT_FILE.write_text(resume_text, encoding="utf-8")
+
+
 def summarize_resume(resume_text: str) -> str:
     prompt = resume_prompt.format(resume=resume_text)
     return llm.invoke(prompt).content
@@ -97,30 +102,24 @@ def format_ollama_error(error: Exception) -> str:
 
 
 def perform_qa(query: str) -> str:
-    if not VECTOR_INDEX_FOLDER.exists():
+    if not RESUME_TEXT_FILE.exists():
         return "Upload a resume first so I can answer questions about it."
 
-    vectorstore = FAISS.load_local(
-        str(VECTOR_INDEX_FOLDER),
-        embeddings,
-        allow_dangerous_deserialization=True,
-    )
-    documents = vectorstore.similarity_search(query, k=4)
+    resume_text = RESUME_TEXT_FILE.read_text(encoding="utf-8").strip()
+    if not resume_text:
+        return "Upload a resume with readable text first so I can answer questions about it."
 
-    if not documents:
-        return "I could not find relevant resume content for that question."
-
-    context = "\n\n".join(doc.page_content for doc in documents)
     qa_prompt = f"""
 You are an AI career coach answering questions about a candidate resume.
 
 Use only the resume context below. If the answer is not present, say that clearly.
+Keep the answer concise and useful.
 
 Question:
 {query}
 
 Resume Context:
-{context}
+{resume_text}
 """
     response = llm.invoke(qa_prompt)
     return response.content if hasattr(response, "content") else str(response)
@@ -158,6 +157,7 @@ def upload_file():
         )
 
     try:
+        save_resume_text(resume_text)
         build_vector_store(resume_text)
         resume_analysis = summarize_resume(resume_text)
     except Exception as error:
