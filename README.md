@@ -102,6 +102,7 @@ Example:
 OLLAMA_BASE_URL=http://127.0.0.1:11434
 OLLAMA_MODEL=llama3.2
 OLLAMA_EMBED_MODEL=nomic-embed-text
+SECRET_KEY=change-this-in-production
 ```
 
 ## How to Run
@@ -123,6 +124,27 @@ Then open:
 ```text
 http://127.0.0.1:5000
 ```
+
+## Render Deployment
+
+Use these settings on Render:
+
+Build Command:
+
+```bash
+pip install -r requirements.txt
+```
+
+Start Command:
+
+```bash
+gunicorn app:app
+```
+
+Important:
+- Render will provide the `PORT` environment variable automatically.
+- This app will only work on Render if `OLLAMA_BASE_URL` points to a reachable remote Ollama server.
+- `http://127.0.0.1:11434` will not work on Render unless Ollama is running inside the same environment.
 
 ## How to Use
 

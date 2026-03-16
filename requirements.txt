@@ -1,4 +1,5 @@
 flask
+gunicorn
 python-dotenv
 PyPDF2
 faiss-cpu

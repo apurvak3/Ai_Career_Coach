@@ -15,6 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
 
 app = Flask(__name__, template_folder="template")
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev-secret-key")
 
 UPLOAD_FOLDER = BASE_DIR / "uploads"
 VECTOR_INDEX_FOLDER = BASE_DIR / "vector_index"
@@ -182,4 +183,6 @@ def ask_query():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.getenv("PORT", "5000"))
+    debug = os.getenv("FLASK_DEBUG", "false").lower() == "true"
+    app.run(host="0.0.0.0", port=port, debug=debug)
