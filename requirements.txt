@@ -1,0 +1,8 @@
+flask
+python-dotenv
+PyPDF2
+faiss-cpu
+langchain
+langchain-community
+langchain-ollama
+langchain-text-splitters
